@@ -2,13 +2,15 @@ package master_project;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class master extends JFrame{
+public class master extends JFrame implements ActionListener{
 	
 	private JPanel panel;
 	private JTextField tField;
@@ -23,11 +25,13 @@ public class master extends JFrame{
 			
 			
 	};
+
 	public master(){
 		tField = new JTextField(35);
 		panel = new JPanel();
-		tField.setText("0.");
+		tField.setText("");
 		tField.setEnabled(false);
+		
 		
 		panel.setLayout(new GridLayout(0,5,3,3));
 		buttons = new JButton[25];
@@ -35,6 +39,7 @@ public class master extends JFrame{
 		for (int rows=0 ; rows <5;rows++){
 		for (int i = 0 ; i <5;i++){
 			buttons[index] = new JButton(labels[index]);
+			buttons[index].addActionListener(this);
 			panel.add(buttons[index]);
 			index++;
 			}
@@ -43,7 +48,8 @@ public class master extends JFrame{
 		add(panel, BorderLayout.CENTER);
 		setVisible(true);
 		pack();
-}
+	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -52,4 +58,12 @@ public class master extends JFrame{
 
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String actionCommand = e.getActionCommand();
+		if(actionCommand == "CL"){
+			
+		}
+	}
 }
